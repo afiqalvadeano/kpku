@@ -36,22 +36,22 @@ function fungsi_iklan(){
    
 }
 add_shortcode('iklan','fungsi_iklan');
-function prefix_enqueue() 
-{       
-    // JS
-    wp_register_script('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js');
-    wp_enqueue_script('prefix_bootstrap');
+// function prefix_enqueue() 
+// {       
+//     // JS
+//     wp_register_script('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js');
+//     wp_enqueue_script('prefix_bootstrap');
 
-    // CSS
-    wp_register_style('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
-    wp_enqueue_style('prefix_bootstrap');
+//     // CSS
+//     wp_register_style('prefix_bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+//     wp_enqueue_style('prefix_bootstrap');
 
 
-}
+// }
 
 function assets(){
-    wp_enqueue_style( 'my-css', plugins_url( 'style.css'.__FILE__ ) );
-    wp_enqueue_script( 'my-js', plugins_url( 'script,js'.__FILE__ ) );
+    // wp_enqueue_style( 'my-css', plugins_url( 'style.css'.__FILE__ ) );
+    // wp_enqueue_script( 'my-js', plugins_url( 'script,js'.__FILE__ ) );
 
     // Bootstrap 5
     wp_register_style('prefix_bootstrap5', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
@@ -61,33 +61,29 @@ function assets(){
     wp_register_script('prefix_jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js');
     wp_enqueue_script('prefix_jquery');
 
+    // // Select 2 CSS
+    // wp_register_style('prefix_selectcss', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
+    // wp_enqueue_style('prefix_selectcss');
+
+    // // Select 2 JS
+    // wp_register_script('prefix_selectjs', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js');
+    // wp_enqueue_script('prefix_selectjs');
+
 }
 add_action( 'admin_init', 'assets' );
 
 
-
-
 function whatsapp($atts){
     $pesan = get_option('wa_pesan');
-    $var = shortcode_atts(
-        array(
-            'pesan' => $pesan,
-        ),$atts
-    );
+    $var = shortcode_atts(['pesan' => $pesan], $atts);
     return '<a href="https://wa.me/'.$var['nohp'].'?text='.urlencode($var['pesan']).'" target="_blank">'.$var['text'].'</a>';
 }
 add_shortcode('whatsapp','whatsapp');
-add_action('wp_head','head_code');
+// add_action('wp_head','head_code');
 
-function head_code()
-{
-
-$output = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>';    
-$output .= '<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>'; 
-$output .= '<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>';
-
-echo $output;
-
-}
-   
-
+// function head_code() {
+//     $output = '<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>';    
+//     $output .= '<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>'; 
+//     $output .= '<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>';
+//     echo $output;
+// }

@@ -54,9 +54,22 @@ add_action('wp_enqueue_scripts', 'theme_wp_scripts');
 
 ?> 
 
-<button id="hai">haiii</button>
+<button id="hai" class="btn btn-success">haiii</button>
 
-<table class="table tes">
+<div class="d-flex p-2 bd-highlight">
+    <?php for($i=0; $i<count($slug); $i++) {  ?>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="<?= $slug[$i]->slug?>">
+            <label class="form-check-label" for="<?= $slug[$i]->slug?>">
+                <?= $slug[$i]->slug ?>
+            </label>
+
+        </div>
+    <?php } ?>
+</div>
+
+<table class="table table-light table-hover">
     <thead>
         <tr>
 
@@ -75,7 +88,9 @@ add_action('wp_enqueue_scripts', 'theme_wp_scripts');
                 if($data[$i]->slug == "nomor_whatsapp") { ?>
                         <td><?= $data[$i]->value ?></td>
                         <td>
-                        <a class="btn btn-primary" href="https://wa.me/<?= $data[$i]->value ?>?text=<?=get_option('wa_pesan');?>"><button>Whatsapp</button></a>
+                        <a class="btn btn-success" href="https://wa.me/<?= $data[$i]->value ?>?text=<?=get_option('wa_pesan');?>">
+                            Whatsapp
+                        </a>
                         </td>
                     <tr>
                 <?php } else { 
@@ -91,10 +106,12 @@ add_action('wp_enqueue_scripts', 'theme_wp_scripts');
 
 <script>
     $(document).ready(function() {
-        $('#date').click(function() {
+        $('#hai').click(function() {
             alert( "Halo afiq!" );
 		})
     })
 </script>
+
+
 
 
